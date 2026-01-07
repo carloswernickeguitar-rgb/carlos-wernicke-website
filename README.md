@@ -1,2 +1,1 @@
-# carlos-wernicke-website
-Website Carlos Wernicke
+<!-- README.md placeholder -->
