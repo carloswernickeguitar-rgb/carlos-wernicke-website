@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Carlos Wernicke — Guitarist</title>
+  <title>Carlos Wernicke</title>
   <meta name="description" content="Carlos Wernicke — Guitarist. Bach, Renaissance repertoire, and programs with projection (Music & Painting)." />
 
   <!-- Favicons -->
@@ -13,476 +13,233 @@
   <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png" />
 
   <!-- Social preview -->
-  <meta property="og:title" content="Carlos Wernicke — Guitarist" />
+  <meta property="og:title" content="Carlos Wernicke" />
   <meta property="og:description" content="Bach, Renaissance repertoire, and programs with projection (Music & Painting)." />
   <meta property="og:image" content="assets/img/share/og-image.jpg" />
 
   <style>
     :root{
-      --bg:#0b0b0c;
-      --fg:#f5f5f5;
-      --muted:#b8b8b8;
-      --line:rgba(255,255,255,.12);
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.08);
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1120px;
+      /* “pastel dossier” look */
+      --bg: #f6f1e8;
+      --paper: #fbf7ef;
+      --ink: #1d1c1a;
+      --muted: rgba(29,28,26,.72);
+      --rule: rgba(29,28,26,.22);
+      --pill: rgba(29,28,26,.08);
+
+      --max: 920px;
+      --pad: 22px;
+
+      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Garamond, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(255,255,255,.08), transparent 55%),
-                  radial-gradient(900px 500px at 10% 10%, rgba(255,255,255,.05), transparent 55%),
-                  var(--bg);
-      color:var(--fg);
-      overflow-x:hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.55;
     }
     a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-
-    /* Layout helpers */
-    .container{width:min(var(--max), calc(100% - 40px)); margin-inline:auto}
-    .section{padding:78px 0; border-top:1px solid var(--line)}
-    .section:first-of-type{border-top:none}
-    .kicker{letter-spacing:.14em; text-transform:uppercase; font-size:12px; color:var(--muted)}
-    .h2{font-size:34px; line-height:1.1; margin:10px 0 14px}
-    .lead{color:var(--muted); max-width:70ch; font-size:16px; line-height:1.6}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(11,11,12,.55);
-      border-bottom:1px solid var(--line);
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    .wrap{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+
+    /* Header (minimal like the PDF) */
+    header{
+      padding: 26px 0 10px;
+    }
+    .topbar{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
       gap:14px;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 14px;
     }
     .brand{
-      display:flex; align-items:baseline; gap:10px;
-      font-weight:600;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: .2px;
     }
-    .brand .name{font-size:16px}
-    .brand .role{font-size:12px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase}
-    nav ul{
-      list-style:none; margin:0; padding:0;
-      display:flex; gap:18px; align-items:center;
-    }
-    nav a{
-      font-size:14px; color:var(--muted);
-      padding:10px 10px; border-radius:12px;
-    }
-    nav a:hover{background:rgba(255,255,255,.06); color:var(--fg)}
-    .cta-top{
-      display:flex; align-items:center; gap:10px;
-    }
-    .pill{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background: rgba(255,255,255,.04);
-      color:var(--fg);
-      font-size:14px;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .pill:hover{background:rgba(255,255,255,.08); transform: translateY(-1px)}
-    .pill.secondary{color:var(--muted)}
-    .hamburger{
-      display:none;
-      width:44px; height:44px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      cursor:pointer;
-      position:relative;
-    }
-    .hamburger span{
-      position:absolute; left:12px; right:12px;
-      height:2px; background: var(--fg);
-      border-radius:2px;
-      transition: transform .18s ease, top .18s ease, opacity .18s ease;
-    }
-    .hamburger span:nth-child(1){top:15px}
-    .hamburger span:nth-child(2){top:21px; opacity:.9}
-    .hamburger span:nth-child(3){top:27px}
-
-    /* Mobile menu */
-    .mobile-menu{
-      display:none;
-      border-top:1px solid var(--line);
-      padding:10px 0 16px;
-    }
-    .mobile-menu a{
-      display:block;
-      padding:12px 12px;
-      border-radius:14px;
-      color:var(--muted);
-    }
-    .mobile-menu a:hover{background:rgba(255,255,255,.06); color:var(--fg)}
-    body.menu-open .mobile-menu{display:block}
-    body.menu-open .hamburger span:nth-child(1){top:21px; transform:rotate(45deg)}
-    body.menu-open .hamburger span:nth-child(2){opacity:0}
-    body.menu-open .hamburger span:nth-child(3){top:21px; transform:rotate(-45deg)}
-
-    /* Hero */
-    .hero{
-      padding:46px 0 60px;
-      border-top:none;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:26px;
-      align-items:stretch;
-    }
-    .hero-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      min-height: 360px;
-      position:relative;
-    }
-    .hero-img{
-      position:absolute; inset:0;
-      background: #111;
-    }
-    .hero-img img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      opacity:.85;
-      transform: scale(1.02);
-    }
-    .hero-overlay{
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(11,11,12,.86), rgba(11,11,12,.35) 60%, rgba(11,11,12,.25));
-    }
-    .hero-content{
-      position:relative;
-      padding:34px;
+    .nav{
       display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      height:100%;
-      gap:20px;
-    }
-    .hero-title{
-      font-size:44px;
-      line-height:1.02;
-      margin:6px 0 10px;
-      letter-spacing:-.02em;
-    }
-    .hero-sub{
-      color:var(--muted);
-      max-width:55ch;
-      line-height:1.6;
-      font-size:16px;
-    }
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
+      gap: 18px;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
       align-items:center;
     }
-    .hero-actions .pill{
-      padding:12px 16px;
-      font-size:14px;
+    .nav a{color: inherit}
+    .nav a:hover{color: var(--ink); text-decoration:none}
+
+    /* “Listen Now” hero */
+    .hero{
+      padding: 36px 0 18px;
+    }
+    .listen{
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .title{
+      font-size: 44px;
+      line-height: 1.03;
+      font-weight: 600;
+      margin: 0 0 16px;
+    }
+    .lead{
+      max-width: 72ch;
+      font-size: 16px;
+      color: var(--ink);
+      margin: 0 0 28px;
     }
 
-    .hero-side{
+    /* Sections */
+    .section{
+      padding: 28px 0 30px;
+      border-top: 1px solid var(--rule);
+    }
+    .section:first-of-type{ border-top: 0; }
+    .h2{
+      font-size: 18px;
+      font-family: var(--serif);
+      font-weight: 600;
+      margin: 0 0 14px;
+    }
+
+    /* Program blocks mimic PDF */
+    .program{
+      padding: 18px 0 18px;
+      border-top: 1px solid var(--rule);
+    }
+    .program:first-child{ border-top: 0; padding-top: 0; }
+    .program-title{
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+    .program-sub{
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+    .program-text{
+      margin: 0 0 14px;
+      color: var(--ink);
+      max-width: 78ch;
+      font-size: 15px;
+    }
+
+    .langs{
       display:flex;
-      flex-direction:column;
-      gap:14px;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin: 4px 0 10px;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
     }
-    .mini-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:18px;
-      background: rgba(255,255,255,.03);
+    .langs .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--pill);
+      color: var(--ink);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration:none;
     }
-    .mini-card .mini-title{font-weight:600; margin:2px 0 8px}
-    .mini-card .mini-text{color:var(--muted); font-size:14px; line-height:1.6; margin:0}
-    .mini-card .row{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
-    }
+    .langs .tag:hover{ text-decoration:none; background: rgba(29,28,26,.12); }
 
-    /* About */
-    .about-grid{
-      display:grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap:26px;
-      align-items:stretch;
+    .dl{
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 12px;
+      margin-bottom: 10px;
     }
-    .about-img{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      height: 420px;
-    }
-    .about-img img{width:100%; height:100%; object-fit:cover}
-    .about-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:22px;
-      background: rgba(255,255,255,.03);
-    }
-
-    /* Programs grid */
-    .programs-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:16px;
-      margin-top:22px;
-    }
-    .program-card{
-      grid-column: span 6;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      transition: transform .16s ease, background .16s ease;
-    }
-    .program-card:hover{transform: translateY(-2px); background: rgba(255,255,255,.05)}
-    .program-card .cover{
-      height: 240px;
-      background: #111;
-    }
-    .program-card .cover img{width:100%; height:100%; object-fit:cover}
-    .program-card .content{padding:18px}
-    .program-card .title{font-weight:650; font-size:18px; margin:0 0 6px}
-    .program-card .desc{margin:0 0 12px; color:var(--muted); font-size:14px; line-height:1.6}
-    .langs{display:flex; flex-wrap:wrap; gap:8px}
-    .lang{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--fg);
-      font-size:13px;
-    }
-    .lang:hover{background:rgba(255,255,255,.08)}
-    .meta-row{
-      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .btn-link{
-      color:var(--muted);
-      font-size:14px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid transparent;
-    }
-    .btn-link:hover{border-color:var(--line); color:var(--fg); background: rgba(255,255,255,.04)}
-
-    .other-card{
-      grid-column: span 12;
-      border:1px dashed rgba(255,255,255,.22);
-      border-radius: var(--radius);
-      padding:18px;
-      background: rgba(255,255,255,.02);
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .other-card .left{display:flex; flex-direction:column; gap:6px}
-    .other-card .right{display:flex; gap:10px; flex-wrap:wrap}
-    .other-title{font-weight:650}
-    .other-sub{color:var(--muted); font-size:14px; margin:0}
-
-    /* Press */
-    .press-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:22px;
-      align-items:stretch;
-    }
-    .press-photo{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      height: 340px;
-      box-shadow: var(--shadow);
-    }
-    .press-photo img{width:100%; height:100%; object-fit:cover}
-    .quotes{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:20px;
-      background: rgba(255,255,255,.03);
-    }
-    blockquote{
-      margin:0 0 14px;
-      padding:0 0 14px;
-      border-bottom:1px solid var(--line);
-      color:var(--fg);
-    }
-    blockquote:last-child{border-bottom:none; padding-bottom:0; margin-bottom:0}
-    .quote-text{color:var(--fg); line-height:1.6; margin:0 0 8px}
-    .quote-src{color:var(--muted); font-size:14px; margin:0}
-
-    /* Music */
-    .music-grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:16px;
-      margin-top:22px;
-    }
-    .panel{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding:18px;
-      box-shadow: var(--shadow);
-    }
-    .albums{grid-column: span 7}
-    .scores{grid-column: span 5}
-    .thumbs{
-      display:grid; grid-template-columns: repeat(5, 1fr);
-      gap:10px; margin-top:12px;
-    }
-    .thumb{
-      border:1px solid var(--line);
-      border-radius: 14px;
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      aspect-ratio: 1 / 1;
-    }
-    .thumb img{width:100%; height:100%; object-fit:cover}
-    .links-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-
-    /* Videos */
-    .video-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      margin-top:22px;
-      align-items:stretch;
-    }
-    .video-embed{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      min-height: 340px;
-    }
-    .video-embed iframe{width:100%; height:100%; min-height:340px; border:0}
-    .video-poster{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      min-height: 340px;
-    }
-    .video-poster img{width:100%; height:100%; object-fit:cover}
-
-    /* Contact */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:22px;
-      align-items:stretch;
-    }
-    .contact-photo{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      height: 340px;
-      box-shadow: var(--shadow);
-    }
-    .contact-photo img{width:100%; height:100%; object-fit:cover}
-    .contact-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:20px;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
+    .dossier-links{
       display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:14px;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin: 0;
     }
-    .contact-items{display:flex; flex-direction:column; gap:10px}
-    .contact-item{color:var(--muted); font-size:15px}
-    .contact-item strong{color:var(--fg); font-weight:600}
-    .footer{
-      padding:32px 0 50px;
-      color:var(--muted);
-      font-size:13px;
-      border-top:1px solid var(--line);
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--paper);
+      text-decoration:none;
+    }
+    .pill:hover{ text-decoration:none; background: #fff; }
+
+    /* Press quotes */
+    .quote{
+      margin: 0 0 16px;
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .quote:last-child{ border-bottom:0; padding-bottom:0; margin-bottom:0; }
+    .qtext{ margin:0 0 6px; font-size: 15px; color: var(--ink); }
+    .qsrc{ margin:0; font-family: var(--sans); font-size: 13px; color: var(--muted); }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 36px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    /* Responsive */
-    @media (max-width: 900px){
-      nav ul{display:none}
-      .hamburger{display:inline-block}
-      .hero-grid{grid-template-columns:1fr}
-      .about-grid{grid-template-columns:1fr}
-      .press-grid{grid-template-columns:1fr}
-      .video-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
-      .program-card{grid-column: span 12}
-      .albums{grid-column: span 12}
-      .scores{grid-column: span 12}
-      .thumbs{grid-template-columns: repeat(3, 1fr)}
-      .hero-title{font-size:38px}
+    /* Mobile */
+    @media (max-width: 760px){
+      .topbar{ align-items:flex-start; flex-direction:column; gap:10px; }
+      .title{ font-size: 36px; }
+      .nav{ flex-wrap:wrap; gap:12px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header>
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Go to top">
-          <span class="name">Carlos Wernicke</span>
-          <span class="role">Guitarist</span>
-        </a>
-
-        <nav aria-label="Primary navigation">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#press">Press</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#videos">Videos</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="#top">Carlos Wernicke</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#other">Other Répertoires</a>
+          <a href="#press">Press &amp; Reviews</a>
+          <a href="#music">Music</a>
+          <a href="#videos">Videos</a>
+          <a href="#contact">Contact</a>
         </nav>
-
-        <div class="cta-top">
-          <a class="pill secondary" href="#music">Listen</a>
-          <a class="pill secondary" href="#videos">Watch</a>
-          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="#about">About</a>
-        <a href="#programs">Programs</a>
-        <a href="#press">Press</a>
-        <a href="#music">Music</a>
-        <a href="#videos">Videos</a>
-        <a href="#contact">Contact</a>
       </div>
     </div>
   </header>
@@ -490,388 +247,192 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="hero-img">
-              <img src="assets/img/01-hero/hero.jpg" alt="Carlos Wernicke — hero image" />
-            </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-              <div>
-                <div class="kicker">Listen Now</div>
-                <h1 class="hero-title">Carlos Wernicke</h1>
-                <p class="hero-sub">
-                  Programs around Bach and the Renaissance repertoire, grounded in historical awareness,
-                  musical rhetoric, and a search for expressive meaning — including concert formats with projection.
-                </p>
-              </div>
-
-              <div class="hero-actions">
-                <a class="pill" href="#music">Listen</a>
-                <a class="pill" href="#videos">Watch</a>
-                <a class="pill" href="#programs">Artistic Dossier</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-side">
-            <div class="mini-card">
-              <div class="kicker">Focus</div>
-              <div class="mini-title">Bach · Renaissance · Music & Painting</div>
-              <p class="mini-text">
-                Three flagship programs and a chamber duo recital, presented in flexible formats and scalable to each venue.
-              </p>
-              <div class="row">
-                <a class="pill secondary" href="#programs">Programs</a>
-                <a class="pill secondary" href="#press">Press</a>
-              </div>
-            </div>
-
-            <div class="mini-card">
-              <div class="kicker">Booking</div>
-              <p class="mini-text">
-                For outreach and programming inquiries:
-                <br><strong style="color:var(--fg)">+34 647 530 470</strong> ·
-                <strong style="color:var(--fg)">chwernicke@gmail.com</strong>
-              </p>
-              <div class="row">
-                <a class="pill secondary" href="#contact">Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="wrap">
+        <div class="listen">Listen Now</div>
+        <h1 class="title">Carlos Wernicke</h1>
+        <p class="lead">
+          Carlos Wernicke approaches music as a space of thought and listening. His work centres on the music of Johann Sebastian Bach and the Renaissance
+          repertoire, approached through historical awareness, musical rhetoric, and a constant search for expressive meaning.
+        </p>
+        <p class="lead">
+          Alongside performance, his artistic practice includes transcription, research, and composition, and extends to other repertoires and musical traditions,
+          shaping programmes in which music enters into dialogue with history, the spoken word, and the cultural contexts that surround it.
+        </p>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="section" id="about">
-      <div class="container">
-        <div class="kicker">About</div>
-        <div class="about-grid">
-          <div class="about-img">
-            <img src="assets/img/02-about/about.jpg" alt="Carlos Wernicke — about" />
-          </div>
-          <div class="about-card">
-            <h2 class="h2">A space of thought and listening</h2>
-            <p class="lead">
-              Carlos Wernicke approaches music as a space of thought and listening. His work centres on the music
-              of Johann Sebastian Bach and the Renaissance repertoire, approached through historical awareness,
-              musical rhetoric, and a constant search for expressive meaning.
-            </p>
-            <p class="lead">
-              Alongside performance, his artistic practice includes transcription, research, and composition, and extends to
-              other repertoires and musical traditions, shaping programmes in which music enters into dialogue with history,
-              the spoken word, and the cultural contexts that surround it.
-            </p>
-            <div class="row" style="margin-top:14px">
-              <a class="pill secondary" href="#programs">Explore Programs</a>
-              <a class="pill secondary" href="#music">Listen</a>
-            </div>
-          </div>
-        </div>
+      <div class="wrap">
+        <div class="h2">About</div>
+        <p class="program-text" style="max-width:78ch;">
+          The guitar becomes a medium of resonance and synthesis, capable of allowing these works to speak again with clarity, depth, and inner intensity.
+        </p>
       </div>
     </section>
 
     <!-- PROGRAMS -->
     <section class="section" id="programs">
-      <div class="container">
-        <div class="kicker">Programs</div>
-        <h2 class="h2">Flagship programmes</h2>
-        <p class="lead">
-          Select programs for solo guitar and chamber music, including formats with projection (Music & Painting).
-        </p>
+      <div class="wrap">
+        <div class="h2">Programs</div>
 
-        <div class="programs-grid">
-
-          <!-- Bach -->
-          <a class="program-card" href="bach.html" aria-label="Open Bach program page">
-            <div class="cover">
-              <img src="assets/img/03-programs/cover-bach.png" alt="Cover — Bach on the Guitar" />
-            </div>
-            <div class="content">
-              <div class="title">Johann Sebastian Bach on the Guitar</div>
-              <div class="desc">
-                Selected works interpreted on guitar with historically informed practice, rhetorical clarity, and structural balance.
-              </div>
-
-              <div class="meta-row">
-                <span class="btn-link">Open program →</span>
-                <span class="btn-link">Download dossiers</span>
-              </div>
-
-              <div class="langs" aria-label="Bach dossiers">
-                <a class="lang" href="https://drive.google.com/file/d/1pUsFbl_YGPSA84mOb9G_qvN1KgQTUG5M/view" target="_blank" rel="noopener">EN</a>
-                <a class="lang" href="https://drive.google.com/file/d/1W9IBclNAIr5cAIuGP1AV483QU-9y8MMd/view" target="_blank" rel="noopener">DE</a>
-                <a class="lang" href="https://drive.google.com/file/d/16JLdn2QGI4bxWjY2fVHy-pIRAh_RClI6/view" target="_blank" rel="noopener">ES</a>
-              </div>
-            </div>
-          </a>
-
-          <!-- Spanish Empire -->
-          <a class="program-card" href="spanish-empire.html" aria-label="Open Spanish Empire program page">
-            <div class="cover">
-              <img src="assets/img/03-programs/cover-spanish-empire.png" alt="Cover — Music & Painting of the Spanish Empire" />
-            </div>
-            <div class="content">
-              <div class="title">Music &amp; Painting of the Spanish Empire</div>
-              <div class="desc">
-                Renaissance music of the Spanish court in dialogue with contemporary painting: devotion, symbolism, transcendence.
-              </div>
-
-              <div class="meta-row">
-                <span class="btn-link">Open program →</span>
-                <span class="btn-link">Download dossiers</span>
-              </div>
-
-              <div class="langs" aria-label="Spanish Empire dossiers">
-                <a class="lang" href="https://drive.google.com/file/d/1tVjrlvL7Qn9wb3l9rV_DJUJF0Ip_QaZx/view" target="_blank" rel="noopener">EN</a>
-                <a class="lang" href="https://drive.google.com/file/d/1bg5IkYrQTlumheTK3hZR7Ann3_VmhQEg/view" target="_blank" rel="noopener">ES</a>
-              </div>
-            </div>
-          </a>
-
-          <!-- Charles V -->
-          <a class="program-card" href="charles-v.html" aria-label="Open Charles V program page">
-            <div class="cover">
-              <img src="assets/img/03-programs/cover-charles-v.png" alt="Cover — The Art Around Charles V" />
-            </div>
-            <div class="content">
-              <div class="title">The Art Around Charles V · Music &amp; Painting</div>
-              <div class="desc">
-                The encounter between Franco-Flemish and Spanish traditions under Charles V — music and visual symbolism side by side.
-              </div>
-
-              <div class="meta-row">
-                <span class="btn-link">Open program →</span>
-                <span class="btn-link">Download dossiers</span>
-              </div>
-
-              <div class="langs" aria-label="Charles V dossiers">
-                <a class="lang" href="https://drive.google.com/file/d/1F04-j-r06DSJd6he3isRcFSEnMhK7h-z/view" target="_blank" rel="noopener">EN</a>
-                <a class="lang" href="https://drive.google.com/file/d/1IuL9ZA4iaGhRjCyam9W9yqNZB_AY7VVx/view" target="_blank" rel="noopener">ES</a>
-                <a class="lang" href="https://drive.google.com/file/d/1J5Y_QCph4WFtCGMm7Df7Ry5WN4M8qkt6/view" target="_blank" rel="noopener">NL</a>
-              </div>
-            </div>
-          </a>
-
-          <!-- Duo -->
-          <a class="program-card" href="duo.html" aria-label="Open Duo program page">
-            <div class="cover">
-              <img src="assets/img/03-programs/cover-duo.png" alt="Cover — Wernicke & Schmied Duo" />
-            </div>
-            <div class="content">
-              <div class="title">Carlos Wernicke &amp; Ernesto Schmied</div>
-              <div class="desc">
-                Bach and Other Sonic Labyrinths — an intimate duo recital crossing five centuries, from counterpoint to popular echoes.
-              </div>
-
-              <div class="meta-row">
-                <span class="btn-link">Open program →</span>
-                <span class="btn-link">Download dossier</span>
-              </div>
-
-              <div class="langs" aria-label="Duo dossier">
-                <a class="lang" href="https://drive.google.com/file/d/15N86eSs8zsy29UiBD000ISG8Ew8JjXlM/view" target="_blank" rel="noopener">ES</a>
-              </div>
-            </div>
-          </a>
-
-          <!-- Other repertoires -->
-          <div class="other-card">
-            <div class="left">
-              <div class="other-title">Other Répertoires</div>
-              <p class="other-sub">Additional programs and collaborations available upon request.</p>
-            </div>
-            <div class="right">
-              <a class="pill secondary" href="#contact">Ask for options</a>
-              <a class="pill secondary" href="#music">Listen</a>
-            </div>
+        <!-- BACH -->
+        <div class="program">
+          <div class="program-title">Johann Sebastian Bach on the Guitar</div>
+          <div class="langs">
+            <span>(EN)</span><span>(DE)</span><span>(ES)</span>
           </div>
-
+          <div class="dl">Download dossiers</div>
+          <div class="dossier-links">
+            <a class="pill" href="https://drive.google.com/file/d/1pUsFbl_YGPSA84mOb9G_qvN1KgQTUG5M/view" target="_blank" rel="noopener">EN</a>
+            <a class="pill" href="https://drive.google.com/file/d/1W9IBclNAIr5cAIuGP1AV483QU-9y8MMd/view" target="_blank" rel="noopener">DE</a>
+            <a class="pill" href="https://drive.google.com/file/d/16JLdn2QGI4bxWjY2fVHy-pIRAh_RClI6/view" target="_blank" rel="noopener">ES</a>
+          </div>
+          <p class="program-text" style="margin-top:14px;">
+            This programme presents selected works by Johann Sebastian Bach interpreted on the guitar, with an approach rooted in historically informed practice,
+            musical rhetoric, and structural clarity. By combining original works and idiomatic transcriptions, it offers a reflective listening experience that
+            highlights the coherence, depth, and expressive restraint characteristic of Bach’s musical language.
+          </p>
+          <a class="pill" href="bach.html">Open program</a>
         </div>
+
+        <!-- SPANISH EMPIRE -->
+        <div class="program">
+          <div class="program-title">Music &amp; Painting of the Spanish Empire</div>
+          <div class="langs">
+            <span>(EN)</span><span>(ES)</span>
+          </div>
+          <div class="dl">Download dossiers</div>
+          <div class="dossier-links">
+            <a class="pill" href="https://drive.google.com/file/d/1tVjrlvL7Qn9wb3l9rV_DJUJF0Ip_QaZx/view" target="_blank" rel="noopener">EN</a>
+            <a class="pill" href="https://drive.google.com/file/d/1bg5IkYrQTlumheTK3hZR7Ann3_VmhQEg/view" target="_blank" rel="noopener">ES</a>
+          </div>
+          <p class="program-text" style="margin-top:14px;">
+            This programme explores the musical and artistic world of the Spanish Renaissance during the reigns of the Catholic Monarchs, Charles V, and Philip II.
+            By placing Renaissance music in dialogue with contemporary painting, it highlights shared expressive ideals—devotion, symbolism, and transcendence—
+            offering a historically grounded perspective on the unity of the arts in sixteenth-century Spain.
+          </p>
+          <a class="pill" href="spanish-empire.html">Open program</a>
+        </div>
+
+        <!-- CHARLES V -->
+        <div class="program">
+          <div class="program-title">The Art Around Charles V · Music &amp; Painting</div>
+          <div class="langs">
+            <span>(EN)</span><span>(ES)</span><span>(NL)</span>
+          </div>
+          <div class="dl">Download dossiers</div>
+          <div class="dossier-links">
+            <a class="pill" href="https://drive.google.com/file/d/1F04-j-r06DSJd6he3isRcFSEnMhK7h-z/view" target="_blank" rel="noopener">EN</a>
+            <a class="pill" href="https://drive.google.com/file/d/1IuL9ZA4iaGhRjCyam9W9yqNZB_AY7VVx/view" target="_blank" rel="noopener">ES</a>
+            <a class="pill" href="https://drive.google.com/file/d/1J5Y_QCph4WFtCGMm7Df7Ry5WN4M8qkt6/view" target="_blank" rel="noopener">NL</a>
+          </div>
+          <p class="program-text" style="margin-top:14px;">
+            This programme examines the cultural world surrounding Emperor Charles V, shaped by the encounter between the Franco-Flemish and Spanish traditions.
+            Through the parallel presentation of music and painting, it reveals a shared humanistic vision in which polyphonic structure, visual symbolism, and
+            introspective expression converge.
+          </p>
+          <a class="pill" href="charles-v.html">Open program</a>
+        </div>
+
+        <!-- DUO -->
+        <div class="program">
+          <div class="program-title">Carlos Wernicke &amp; Ernesto Schmied</div>
+          <div class="langs"><span>(ES)</span></div>
+          <div class="dl">Download dossiers</div>
+          <div class="dossier-links">
+            <a class="pill" href="https://drive.google.com/file/d/15N86eSs8zsy29UiBD000ISG8Ew8JjXlM/view" target="_blank" rel="noopener">ES</a>
+          </div>
+          <p class="program-text" style="margin-top:14px;">
+            Bach and Other Sonic Labyrinths — an intimate chamber recital conceived as a journey through contrasting musical landscapes, structured around
+            selected Two-Part Inventions by J.S. Bach and extending across nearly five centuries.
+          </p>
+          <a class="pill" href="duo.html">Open program</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OTHER REPERTOIRES -->
+    <section class="section" id="other">
+      <div class="wrap">
+        <div class="h2">Other Répertoires</div>
+        <p class="program-text" style="max-width:78ch;">
+          Additional programmes and collaborations are available upon request.
+        </p>
       </div>
     </section>
 
     <!-- PRESS -->
     <section class="section" id="press">
-      <div class="container">
-        <div class="kicker">Press &amp; Reviews</div>
-        <h2 class="h2">Selected quotes</h2>
+      <div class="wrap">
+        <div class="h2">Press &amp; Reviews</div>
 
-        <div class="press-grid">
-          <div class="press-photo">
-            <img src="assets/img/08-press/press.jpg" alt="Press editorial photo" />
-          </div>
+        <div class="quote">
+          <p class="qtext">“…the guitarist Carlos Wernicke accompanied with delicacy and creativity (extraordinary, by the way) — an artist well worth keeping an eye on.”</p>
+          <p class="qsrc">Juan Ángel Vela del Campo — El País</p>
+        </div>
 
-          <div class="quotes">
-            <blockquote>
-              <p class="quote-text">“…the guitarist Carlos Wernicke accompanied with delicacy and creativity (extraordinary, by the way) — an artist well worth keeping an eye on.”</p>
-              <p class="quote-src">Juan Ángel Vela del Campo — <em>El País</em></p>
-            </blockquote>
+        <div class="quote">
+          <p class="qtext">“…the Argentine guitarist Carlos Wernicke, a name truly worthy of attention for his admirable musical sensitivity and technical virtuosity.”</p>
+          <p class="qsrc">Leopoldo Rojas-O’Donnell — Scherzo</p>
+        </div>
 
-            <blockquote>
-              <p class="quote-text">“…the Argentine guitarist Carlos Wernicke, a name truly worthy of attention for his admirable musical sensitivity and technical virtuosity.”</p>
-              <p class="quote-src">Leopoldo Rojas-O’Donnell — <em>Scherzo</em></p>
-            </blockquote>
-
-            <blockquote>
-              <p class="quote-text">“…a guitarist who does not merely accompany, but instead seeks the perfect atmosphere for each song, the ideal sound for the word (…) achieving moments of spectacular brilliance.”</p>
-              <p class="quote-src">Rodrigo Barbosa — <em>La Provincia (Las Palmas)</em></p>
-            </blockquote>
-          </div>
+        <div class="quote">
+          <p class="qtext">“…a guitarist who does not merely accompany, but instead seeks the perfect atmosphere for each song, the ideal sound for the word (…) achieving moments of spectacular brilliance.”</p>
+          <p class="qsrc">Rodrigo Barbosa — La Provincia (Las Palmas)</p>
         </div>
       </div>
     </section>
 
     <!-- MUSIC -->
     <section class="section" id="music">
-      <div class="container">
-        <div class="kicker">Music</div>
-        <h2 class="h2">Works · Recordings · Scores</h2>
-        <p class="lead">Streaming links and selected visuals for albums and publications.</p>
-
-        <div class="music-grid">
-          <div class="panel albums">
-            <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-end; flex-wrap:wrap;">
-              <div>
-                <div class="kicker">Albums</div>
-                <div style="font-weight:650; margin-top:6px;">Streaming &amp; Download</div>
-              </div>
-              <div class="links-row">
-                <a class="pill secondary" href="https://open.spotify.com/artist/5eLlIzc5h7ou7ELzm6mNPB" target="_blank" rel="noopener">Spotify</a>
-                <a class="pill secondary" href="https://www.youtube.com/@chwernicke/playlists" target="_blank" rel="noopener">YouTube</a>
-                <a class="pill secondary" href="https://www.deezer.com/it/artist/245046822" target="_blank" rel="noopener">Deezer</a>
-              </div>
-            </div>
-
-            <div class="thumbs" aria-label="Album covers">
-              <div class="thumb"><img src="assets/img/09-music/album-01.png" alt="Album 01" /></div>
-              <div class="thumb"><img src="assets/img/09-music/album-02.png" alt="Album 02" /></div>
-              <div class="thumb"><img src="assets/img/09-music/album-03.png" alt="Album 03" /></div>
-              <div class="thumb"><img src="assets/img/09-music/album-04.png" alt="Album 04" /></div>
-              <div class="thumb"><img src="assets/img/09-music/album-05.png" alt="Album 05" /></div>
-            </div>
-          </div>
-
-          <div class="panel scores">
-            <div class="kicker">Les Productions d’Oz</div>
-            <div style="font-weight:650; margin-top:6px;">Sheet music</div>
-            <p class="lead" style="font-size:14px; margin-top:10px;">
-              Publications and scores available through Les Productions d’Oz.
-            </p>
-            <div class="links-row">
-              <a class="pill secondary" href="https://productionsdoz.com/fr/catalogue/?search=carlos%20wernicke" target="_blank" rel="noopener">Catalogue</a>
-            </div>
-
-            <div class="thumbs" aria-label="Score covers" style="grid-template-columns: repeat(3, 1fr);">
-              <div class="thumb"><img src="assets/img/09-music/partitura-01.png" alt="Score 01" /></div>
-              <div class="thumb"><img src="assets/img/09-music/partitura-02.png" alt="Score 02" /></div>
-              <div class="thumb"><img src="assets/img/09-music/partitura-03.png" alt="Score 03" /></div>
-              <div class="thumb"><img src="assets/img/09-music/partitura-04.png" alt="Score 04" /></div>
-              <div class="thumb"><img src="assets/img/09-music/partitura-05.png" alt="Score 05" /></div>
-            </div>
-          </div>
+      <div class="wrap">
+        <div class="h2">Music</div>
+        <p class="program-text">
+          Works · Compositions · Streaming &amp; Download
+        </p>
+        <div class="dossier-links" style="margin-top:10px">
+          <a class="pill" href="https://open.spotify.com/artist/5eLlIzc5h7ou7ELzm6mNPB" target="_blank" rel="noopener">Spotify</a>
+          <a class="pill" href="https://www.youtube.com/@chwernicke/playlists" target="_blank" rel="noopener">YouTube</a>
+          <a class="pill" href="https://www.deezer.com/it/artist/245046822" target="_blank" rel="noopener">Deezer</a>
+          <a class="pill" href="https://productionsdoz.com/fr/catalogue/?search=carlos%20wernicke" target="_blank" rel="noopener">Les Productions d’Oz</a>
         </div>
       </div>
     </section>
 
     <!-- VIDEOS -->
     <section class="section" id="videos">
-      <div class="container">
-        <div class="kicker">Videos</div>
-        <h2 class="h2">Featured video</h2>
-        <p class="lead">Embed from YouTube, with poster image support.</p>
-
-        <div class="video-grid">
-          <div class="video-embed" aria-label="YouTube embed">
-            <!-- Replace the src with your final embed URL if needed -->
-            <iframe
-              src="https://www.youtube.com/embed/eVbPAr76INg"
-              title="Invención y Milonga — Carlos Wernicke"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <div class="video-poster">
-            <img src="assets/media/poster/invencion-milonga.png" alt="Video poster — Invención y Milonga" />
-          </div>
+      <div class="wrap">
+        <div class="h2">Videos</div>
+        <p class="program-text" style="max-width:78ch;">
+          Invención y Milonga — Carlos Wernicke
+        </p>
+        <div class="dossier-links" style="margin-top:10px">
+          <a class="pill" href="https://www.youtube.com/watch?v=eVbPAr76INg" target="_blank" rel="noopener">Open on YouTube</a>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
-      <div class="container">
-        <div class="kicker">Contact</div>
-        <h2 class="h2">Booking &amp; inquiries</h2>
-
-        <div class="contact-grid">
-          <div class="contact-photo">
-            <img src="assets/img/12-contact/contact.jpg" alt="Contact photo" />
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-items">
-              <div class="contact-item"><strong>Phone:</strong> +34 647 530 470</div>
-              <div class="contact-item"><strong>Email:</strong> <a href="mailto:chwernicke@gmail.com" style="color:var(--fg)">chwernicke@gmail.com</a></div>
-              <div class="contact-item"><strong>Location:</strong> Europe (Spain / NL / DE) · Touring internationally</div>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="pill" href="mailto:chwernicke@gmail.com">Write email</a>
-              <a class="pill secondary" href="#programs">View programs</a>
-            </div>
-          </div>
-        </div>
+      <div class="wrap">
+        <div class="h2">Contact</div>
+        <p class="program-text"><strong>Phone:</strong> +34 647 530 470</p>
+        <p class="program-text"><strong>Email:</strong> <a href="mailto:chwernicke@gmail.com">chwernicke@gmail.com</a></p>
+        <p class="program-text"><strong>Location:</strong> Europe (Spain / NL / DE) · Touring internationally</p>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container">
-        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-          <div>© <span id="year"></span> Carlos Wernicke</div>
-          <div>
-            <a href="#top" class="btn-link">Back to top ↑</a>
-          </div>
-        </div>
+    <footer>
+      <div class="wrap">
+        © <span id="y"></span> Carlos Wernicke
       </div>
     </footer>
   </main>
 
   <script>
-    // Mobile menu toggle
-    const btn = document.getElementById('hamburger');
-    const menu = document.getElementById('mobileMenu');
-
-    function closeMenu(){
-      document.body.classList.remove('menu-open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'Open menu');
-    }
-
-    btn.addEventListener('click', () => {
-      const isOpen = document.body.classList.toggle('menu-open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-      btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    });
-
-    // Close menu when clicking a mobile link
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // Close menu on ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
-
-    // Close menu when resizing up
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 900) closeMenu();
-    });
-
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
